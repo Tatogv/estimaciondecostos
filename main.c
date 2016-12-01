@@ -30,9 +30,7 @@ int main(void)
     printf("\n2. Calcular complejidad.");
     printf("\n3. Seleccionar lenguaje de programacion.");
     printf("\n4. Seleccionar el tipo de proyecto.");
-    printf("\n5. Calcular costo total del proyecto.");
-
-    printf("\n6. Salir.");
+    printf("\n5. Salir.");
 
     printf("\n**************************************************");
     printf("\n            Informacion  Proporcionada            ");
@@ -60,6 +58,19 @@ int main(void)
       printf("\n  Tipo de proyecto:            Medio");
     else if(tipo == 3)
       printf("\n  Tipo de proyecto:            Embebido");
+    if(tipo !=0 && ldc!=0){
+      energia = func_energia(tipo, ldc);
+      meses = func_meses(tipo, energia);
+      personas = func_personas(energia, meses);
+      total = func_total(personas, meses, lang);
+
+      printf("\n**************************************************");
+      printf("\n               Estimado del Proyecto              ");
+
+      printf("\n  Duracion Estimada:           %.0f meses", meses);
+      printf("\n  Numero de Personas:          %.0f personas", personas);
+      printf("\n  Costo Total:                 $%.2f pesos.", total);
+    }
     printf("\n\n$ ");
 
     scanf("%d", &opc);
@@ -72,14 +83,19 @@ int main(void)
       printf("     Para calcular los Puntos de Funcion del programa conteste las siquientes preguntas:\n");
       printf("\n\n¿Cuantas entradas de usuario tiene el sistema?\n");
       scanf("%d", &ei);
+      system("clear");
       printf("\n¿Cuantas salidas de usuario tiene el sistema?\n");
       scanf("%d", &eo);
+      system("clear");
       printf("\n¿Cuantas peticiones de usuario tiene el sistema?\n");
       scanf("%d", &eq);
+      system("clear");
       printf("\n¿Cuantos archivos manejara el sistema?\n");
       scanf("%d", &ilf);
+      system("clear");
       printf("\n¿Cuantas cuantas interfaces externas manejara el sistema?\n");
       scanf("%d", &eif);
+      system("clear");
       ufp = func_ufp(ei, eo, eq, ilf, eif);
       system("clear");
       printf("     Los puntos de funcion sin ajustar son: %.0f", ufp);
@@ -131,44 +147,6 @@ int main(void)
       break;
 
     case 5:
-
-    system("clear");
-
-     energia = func_energia(tipo, ldc);
-    meses = func_meses(tipo, energia);
-    personas = func_personas(energia, meses);
-    total = func_total(personas, meses, lang);
-
-    printf(" ----- Resumen del proyecto ----- \n");
-
-    if(lang == 1){
-     printf("\nLenguaje de programacion utilizado: Java.");
-    }
-    else if(lang == 2){
-     printf("\nLenguaje de programacion utilizado: Javascript.");
-    }
-    else if(lang == 3){
-     printf("\nLenguaje de programacion utilizado: C.");
-    }
-    else if(lang == 4){
-     printf("\nLenguaje de programacion utilizado: C#.");
-    }
-
-    printf("\nLineas de codigo estimadas: %.0f lineas de codigo.", ldc);
-
-    printf("\nTiempo de duracion del proyecto estimado: %.0f meses.", meses);
-
-    printf("\nNumero de personas necesarias para realizar el proyecto estimado: %.0f personas", personas);
-
-    printf("\n\n     Costo total del proyecto estimado: $%.2f pesos.", total);
-
-    getchar();
-    getchar();
-
-
-    break;
-
-    case 6:
 
       exit(0);
 

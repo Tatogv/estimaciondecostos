@@ -169,9 +169,9 @@ float func_total(float personas, float meses, int lang)
 int func_ask() {//Retorna el total de la suma elegida por los usuarios en respuesta a las preguntas
   int i,valor,error=0;
   int total=0;
-  char Pregunta[15][70];
+  char Pregunta[15][91];
 
-  system("clear");
+
 
   strcpy(Pregunta[0],"¿Se requiere comunicacion de datos?");
   strcpy(Pregunta[1],"¿Existen funciones o procesos distribuidos?");
@@ -191,14 +191,15 @@ int func_ask() {//Retorna el total de la suma elegida por los usuarios en respue
 
   for (i = 0; i <= 14; i++) {
     do{
+      system("clear");
       printf("Utilizando numeros del 0 al 5.\nResponde la pregunta:\n%s\n",Pregunta[i]);
       scanf("%d",&valor);
       if ((valor>5)||(valor<0)) {
-	printf("Intenta de nuevo\n");
-	error=1;
+	       printf("Intenta de nuevo\n");
+	       error=1;
       }else{
-	total=total+valor;
-	error=0;
+	       total=total+valor;
+	       error=0;
       }
     }while(error==1);
     valor=0;
