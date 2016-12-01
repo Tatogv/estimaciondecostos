@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.c
- * Author: Chemoso, Fernando, Cjaa92
+ * Author: Chemoso, Fernando, Cjaa92, Ricardo
  *
  * Created on 28 November 2016, 6:05 PM
  */
@@ -191,9 +191,9 @@ int func_ask() {//Retorna el total de la suma elegida por los usuarios en respue
 
   for (i = 0; i <= 14; i++) {
     do{
-      printf("Utilizando numeros del 1 al 5.\nResponde la pregunta:\n%s\n",Pregunta[i]);
+      printf("Utilizando numeros del 0 al 5.\nResponde la pregunta:\n%s\n",Pregunta[i]);
       scanf("%d",&valor);
-      if ((valor>5)||(valor<=0)) {
+      if ((valor>5)||(valor<0)) {
 	printf("Intenta de nuevo\n");
 	error=1;
       }else{
