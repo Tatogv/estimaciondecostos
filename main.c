@@ -187,7 +187,7 @@ int main(void)
     getchar();
 
 
-    break
+    break;
 
     case 6:
 
