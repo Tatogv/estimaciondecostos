@@ -6,7 +6,7 @@
 
 /* 
  * File:   main.c
- * Author: Chemoso
+ * Author: Chemoso, Fernando, Cjaa92
  *
  * Created on 28 November 2016, 6:05 PM
  */
@@ -33,8 +33,8 @@
  * 
  */
 float func_ufp(int ei, int eo, int eq, int ilf, int eif);
-float func_fp(int ufp, int total);
-float func_ldc(int fp, int lang);
+float func_fp(float ufp, int total);
+float func_ldc(float fp, int lang);
 float func_energia(int tipo, float ldc);
 float func_meses(int tipo, float energia);
 float func_personas(float energia, float meses);
@@ -42,7 +42,7 @@ float func_total(float personas, float meses, int lang);
 
 
 
-int main(int argc, char** argv) {
+/*int main(int argc, char** argv) {
     float ldc,tipo=1,lang=1,energia,meses,personas,total;
     int fp, ufp;
     ufp = func_ufp(4,4,3,4,0);
@@ -55,14 +55,14 @@ int main(int argc, char** argv) {
     printf("%.2f",total);
     
     return (EXIT_SUCCESS);
-}
+    }*/
 
 float func_ufp(int ei, int eo, int eq, int ilf, int eif)
 {
     return((ei*PESO_EI)+(eo*PESO_EO)+(eq*PESO_EQ)+(ilf*PESO_ILF)+(eif*PESO_EIF));   
 }
 
-float func_fp(int ufp, int total)
+float func_fp(float ufp, int total)
 {
     float caf;
     caf = (.65+(.01*total));
@@ -70,7 +70,7 @@ float func_fp(int ufp, int total)
     
 }
 
-float func_ldc(int fp, int lang)//lang = lenguaje, 1 == java, 2 == javascript, 3 == c, 4 == c#
+float func_ldc(float fp, int lang)//lang = lenguaje, 1 == java, 2 == javascript, 3 == c, 4 == c#
 {
     if(lang == 1)
     {
