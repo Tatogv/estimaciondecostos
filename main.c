@@ -7,7 +7,7 @@ extern float func_energia(int tipo, float ldc);
 extern float func_meses(int tipo, float energia);
 extern float func_personas(float energia, float meses);
 extern float func_total(float personas, float meses, int lang);
-extern int func_ask;//Funcion preguntas de factor ambiental
+extern int func_ask();//Funcion preguntas de factor ambiental
 
 int main(void)
 {
