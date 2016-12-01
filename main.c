@@ -11,7 +11,7 @@ extern int func_ask();//Funcion preguntas de factor ambiental
 
 int main(void)
 {
-  int ei, eo, eq, ilf, eif, tot = 43, lang = 0, tipo = 0, opc, bandera;
+  int ei, eo, eq, ilf, eif, tot=0, lang = 0, tipo = 0, opc, bandera;
   float ldc = 0, energia, meses, personas, total, fp, ufp = 0;
   
   system("clear");
@@ -110,6 +110,8 @@ int main(void)
       break;
 
     case 2:
+
+      tot=func_ask();
 
       fp = func_fp(ufp, tot);
 

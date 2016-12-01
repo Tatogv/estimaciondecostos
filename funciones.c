@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <string.h>
 
 #define PESO_EI  3
 #define PESO_EO  4
@@ -39,7 +40,7 @@ float func_energia(int tipo, float ldc);
 float func_meses(int tipo, float energia);
 float func_personas(float energia, float meses);
 float func_total(float personas, float meses, int lang);
-
+int func_ask();
 
 
 /*int main(int argc, char** argv) {
@@ -163,4 +164,44 @@ float func_total(float personas, float meses, int lang)
     {
         return(round(personas)*round(meses)*CSHARP_S);
     }
+}
+
+int func_ask() {//Retorna el total de la suma elegida por los usuarios en respuesta a las preguntas                                                                                                         
+  int i,valor,error=0;
+  int total;
+  char Pregunta[15][70];
+
+  system("clear");
+
+  strcpy(Pregunta[0],"¿Se requiere comunicacion de datos?");
+  strcpy(Pregunta[1],"¿Existen funciones o procesos distribuidos?");
+  strcpy(Pregunta[2],"¿Es critico el rendimiento?");
+  strcpy(Pregunta[3],"¿Se ejecutara el sistema en un entorno operativo fuerte y existente fuertemente utilizado?");
+  strcpy(Pregunta[4],"¿El sistema tendra una carga transaccional alta o baja?");
+  strcpy(Pregunta[5],"¿Se requiere comunicacion de datos?");
+  strcpy(Pregunta[6],"Nivel de disponibilidad");
+  strcpy(Pregunta[7],"Eficiencia de usuario final requerida");
+  strcpy(Pregunta[8],"Actualizacion en linea");
+  strcpy(Pregunta[9],"Complejidad de procesamiento");
+  strcpy(Pregunta[10],"¿Sistema debe estar diseñado e implantado para ser reutilizable?");
+  strcpy(Pregunta[11],"¿Se requiere que este diseñado para ser facil de instalar y portar?");
+  strcpy(Pregunta[12],"Facilidad de uso");
+  strcpy(Pregunta[13],"¿Soportar multiples instalaciones");
+  strcpy(Pregunta[14],"¿Diseñado para facilitar cambios?");
+
+  for (i = 0; i <= 14; i++) {
+    do{
+      printf("Utilizando numeros del 1 al 5.\nResponde la pregunta:\n%s\n",Pregunta[i]);
+      scanf("%d",&valor);
+      if ((valor>5)||(valor<=0)) {
+	printf("Intenta de nuevo\n");
+	error=1;
+      }else{
+	total=total+valor;
+	error=0;
+      }
+    }while(error==1);
+    valor=0;
+  }
+  return total;
 }
