@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 extern float func_ufp(int ei, int eo, int eq, int ilf, int eif);
-extern float func_fp(int tot);
+extern float func_fp(float ufp, int tot);
 extern float func_ldc(float fp, int lang);
 extern float func_energia(int tipo, float ldc);
 extern float func_meses(int tipo, float energia);
@@ -10,7 +10,7 @@ extern float func_total(float personas, float meses, int lang);
 
 int main(void)
 {
-  int ei, eo, eq, ilf, eif, tot, lang = 0, tipo = 0, opc, bandera;
+  int ei, eo, eq, ilf, eif, tot = 43, lang = 0, tipo = 0, opc, bandera;
   float ldc = 0, energia, meses, personas, total, fp, ufp = 0;
   
   system("clear");
@@ -29,7 +29,7 @@ int main(void)
       printf("\n1. Calcular Puntos de Funcion.");
     }
     else{
-      printf("\n1. Calcular Puntos de Funcion. ---------------> %f", ufp);
+      printf("\n1. Calcular Puntos de Funcion. ---------------> %.0f", ufp);
     }
 
 
@@ -38,7 +38,7 @@ int main(void)
     }
     else{
       printf("\n2. Calcular complejidad. ---------------------> %d", tot);
-      printf("\n     Puntos de Funcion ajustados: %f ", fp); 
+      printf("\n     Puntos de Funcion ajustados: %.0f ", fp); 
     }
 
 
@@ -58,7 +58,8 @@ int main(void)
       printf("\n3. Seleccionar lenguaje de programacion. -----> C#");
     }
     if(lang != 0){
-      printf("\n     Total de lineas de codigo estimadas: %f LDC", ldc);
+      ldc = func_ldc(fp, lang);
+      printf("\n     Total de lineas de codigo estimadas: %.0f LDC", ldc);
     }
 
 
@@ -66,16 +67,18 @@ int main(void)
       printf("\n4. Seleccionar el tipo de proyecto.");
     }
     else if(tipo == 1){
-      printf("\n4. Seleccionar el tipo de proyecto. ---------------> Organico");
+      printf("\n4. Seleccionar el tipo de proyecto. ----------> Organico");
     }
     else if(tipo == 2){
-      printf("\n4. Seleccionar el tipo de proyecto. ---------------> Medio");
+      printf("\n4. Seleccionar el tipo de proyecto. ----------> Medio");
     }
     else if(tipo == 3){
-      printf("\n4. Seleccionar el tipo de proyecto. ---------------> Embebido");
+      printf("\n4. Seleccionar el tipo de proyecto. ----------> Embebido");
     }
 
     printf("\n5. Calcular costo total del proyecto.");
+
+    printf("\n6. Salir.");
 
     printf("\n\nOPCION: ");
 
@@ -97,7 +100,7 @@ int main(void)
       scanf("%d", &ilf);
       printf("\n¿Cuantas cuantas interfaces externas manejara el sistema?\n");
       scanf("%d", &eif);
-      //ufp = func_ufp(ei, eo, eq, ilf, eif);
+      ufp = func_ufp(ei, eo, eq, ilf, eif);
       system("clear");
       printf("     Los puntos de funcion sin ajustar son: %.0f", ufp);
       getchar();
@@ -107,13 +110,14 @@ int main(void)
 
     case 2:
 
-      
+      fp = func_fp(ufp, tot);
 
       break;
 
     case 3:
       
       system("clear");
+      bandera = 0;
       while(bandera==0)
 	{
 	  printf("  Por favor digite  el lenguaje deseado:\n\n1. Java.\n2. Javascript.\n3. C.\n4. C#.\n\nOPCION:  "); 
@@ -130,8 +134,6 @@ int main(void)
 	      printf("La opcion ingresada no es valida. Por favor intente de nuevo.\n");
 	    }     
 	}
-
-      //ldc = func_ldc(fp, lang);
     
     break;
     
@@ -148,7 +150,7 @@ int main(void)
 
     case 5:
 
-      //energia = func_energia(tipo, ldc);
+      energia = func_energia(tipo, ldc);
 
       break;
 
@@ -161,7 +163,8 @@ int main(void)
     default:
 
       system("clear");
-      printf("Opcion invalida, por favor intente de nuevo");
+      printf("Opcion invalida, por favor intente de nuevo.\n");
+      getchar();
       getchar();
     }
     
