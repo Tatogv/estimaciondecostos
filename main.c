@@ -13,15 +13,15 @@ int main(void)
 {
   int ei, eo, eq, ilf, eif, tot=0, lang = 0, tipo = 0, opc, bandera;
   float ldc = 0, energia, meses, personas, total, fp, ufp = 0;
-  
+
   system("clear");
   printf(" ----- Bienvenido al sistema de calculo del costo de un proyecto de software. ----- ");
   printf("\n\n    Este programa realiza el calculo de un sistema de software por medio de la utilizacion de Puntos de Funcion.\nPresione enter para continuar.\n");
-  
+
   getchar();
- 
+
   while(1){
- 
+
     system("clear");
 
     printf(" ----- MENU PRINCIPAL ----- ");
@@ -39,7 +39,7 @@ int main(void)
     }
     else{
       printf("\n2. Calcular complejidad. ---------------------> %d", tot);
-      printf("\n     Puntos de Funcion ajustados: %.0f ", fp); 
+      printf("\n     Puntos de Funcion ajustados: %.0f ", fp);
     }
 
 
@@ -118,44 +118,76 @@ int main(void)
       break;
 
     case 3:
-      
+
       system("clear");
       bandera = 0;
       while(bandera==0)
 	{
-	  printf("  Por favor digite  el lenguaje deseado:\n\n1. Java.\n2. Javascript.\n3. C.\n4. C#.\n\nOPCION:  "); 
-	  scanf("%d", &lang);    
-	  
+	  printf("  Por favor digite  el lenguaje deseado:\n\n1. Java.\n2. Javascript.\n3. C.\n4. C#.\n\nOPCION:  ");
+	  scanf("%d", &lang);
+
 	  if(lang==1||lang==2||lang==3||lang==4)
 	    {
-	      printf("El valor ingresado  es valido\n"); 
-	      bandera=1; 
+	      printf("El valor ingresado  es valido\n");
+	      bandera=1;
 	    }
 	  else
 	    {
-	      bandera=0; 
+	      bandera=0;
 	      printf("La opcion ingresada no es valida. Por favor intente de nuevo.\n");
-	    }     
+	    }
 	}
-    
+
     break;
-    
+
     case 4:
 
       system("clear");
-      
+
       printf("Ingrese el tipo del proytecto.\n\n1. Organico --> Equipos pequeños con buena experiencia trabajando en proyectos poco rigidos.\n2. Medio --> Equipos de tamaño medio trabajando en proyectos con requerimientos rigidos y poco rigidos combinados.\n3. Embebido --> proyectos con una gran cantidad de restricciones.\n\n");
 
       printf("OPCION: ");
       scanf("%d", &tipo);
-      
+
       break;
 
     case 5:
 
-      energia = func_energia(tipo, ldc);
+    system("clear");
 
-      break;
+     energia = func_energia(tipo, ldc);
+    meses = func_meses(tipo, energia);
+    personas = func_personas(energia, meses);
+    total = func_total(personas, meses, lang);
+
+    printf(" ----- Resumen del proyecto ----- \n");
+
+    if(lang == 1){
+     printf("\nLenguaje de programacion utilizado: Java.");
+    }
+    else if(lang == 2){
+     printf("\nLenguaje de programacion utilizado: Javascript.");
+    }
+    else if(lang == 3){
+     printf("\nLenguaje de programacion utilizado: C.");
+    }
+    else if(lang == 4){
+     printf("\nLenguaje de programacion utilizado: C#.");
+    }
+
+    printf("\nLineas de codigo estimadas: %.0f lineas de codigo.", ldc);
+
+    printf("\nTiempo de duracion del proyecto estimado: %.0f meses.", meses);
+
+    printf("\nNumero de personas necesarias para realizar el proyecto estimado: %.0f personas", personas);
+
+    printf("\n\n     Costo total del proyecto estimado: $%.2f pesos.", total);
+
+    getchar();
+    getchar();
+
+
+    break
 
     case 6:
 
@@ -170,7 +202,7 @@ int main(void)
       getchar();
       getchar();
     }
-    
+
   }
 
   return 0;
