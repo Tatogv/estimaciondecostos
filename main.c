@@ -1,3 +1,8 @@
+/*
+ * File:   main.c
+ * Author: Equipo TDA_Oto16 (Para mayor referencia, consultar la documentación)
+ * Version 2.0
+ */
 #include <stdio.h>
 #include "funciones.c"
 

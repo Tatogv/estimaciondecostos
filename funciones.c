@@ -1,21 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
- * File:   main.c
- * Author: Chemoso, Fernando, Cjaa92, Ricardo
- *
- * Created on 28 November 2016, 6:05 PM
+ * File:   funciones.c
+ * Author: Equipo TDA_Oto16 (Para mayor referencia, consultar la documentación)
+ * Version 2.0
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
-
+/*
+**Declaracion de Constatntes
+*/
 #define PESO_EI  3
 #define PESO_EO  4
 #define PESO_EQ  3
@@ -58,11 +53,18 @@ int func_ask();
     return (EXIT_SUCCESS);
     }*/
 
+/*
+**La funcion func_ufp funciona para realizar un calculo de los Puntos de Funcion sin ajustar
+*/
 float func_ufp(int ei, int eo, int eq, int ilf, int eif)
 {
     return((ei*PESO_EI)+(eo*PESO_EO)+(eq*PESO_EQ)+(ilf*PESO_ILF)+(eif*PESO_EIF));
 }
 
+
+/*
+**La funcion func_fp utiliza el coeficiente de ajuste para calcular los puntos de funcion de acuerdo a la complejidad del proyecto.
+*/
 float func_fp(float ufp, int total)
 {
     float caf;
@@ -71,6 +73,9 @@ float func_fp(float ufp, int total)
 
 }
 
+/*
+**Funcion func_ldc utiliza los valores de QSM para calcular las lineas de codigo con base a los puntos de funcion
+*/
 float func_ldc(float fp, int lang)//lang = lenguaje, 1 == java, 2 == javascript, 3 == c, 4 == c#
 {
     if(lang == 1)
@@ -91,6 +96,9 @@ float func_ldc(float fp, int lang)//lang = lenguaje, 1 == java, 2 == javascript,
     }
 }
 
+/*
+**La funcion func_energia utiliza el tipo de proyecto segun el modelo COCOMO Basico y las lineas de codigo para calcular la energia en Personas-Mes
+*/
 float func_energia(int tipo, float ldc)
 {
     float a,b;
@@ -115,7 +123,9 @@ float func_energia(int tipo, float ldc)
     }
 }
 
-
+/*
+**La funcion func_meses se utiliza para calcular mediante el tipo de proyecto y la energia la cantidad de meses requeridos
+*/
 float func_meses(int tipo, float energia)
 {
     float c,d;
@@ -139,12 +149,18 @@ float func_meses(int tipo, float energia)
     }
 }
 
+/*
+**La funcion func_personas se utiliza para calcular la cantidad de personas necesarias para el proyecto, utilizando la energia y la cantidad de meses
+*/
 float func_personas(float energia, float meses)
 {
     return(energia/meses);
 }
 
 
+/*
+**Funcion func_total utiliza los datos de SG para calcular el costo del proyecto en pesos, utiliza personas, mese y lenguaje de programacion
+*/
 float func_total(float personas, float meses, int lang)
 {
     if(lang == 1)
@@ -166,6 +182,9 @@ float func_total(float personas, float meses, int lang)
     }
 }
 
+/*
+**La funcion func_ask se encarga de obtener el coeficiente de ajuste para los puntos de funcion
+*/
 int func_ask() {//Retorna el total de la suma elegida por los usuarios en respuesta a las preguntas
   int i,valor,error=0;
   int total=0;
