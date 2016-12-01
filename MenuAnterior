@@ -1,0 +1,54 @@
+/*
+printf(" ----- MENU PRINCIPAL ----- ");
+printf("\n\nPara seleccionar una opcion teclee el numero indicado y presione enter. Si desea modificar alguna seccion vuelva a seleccionar la opcion. Se necesitan haber llenado todos los campos antes de obtener el costo total del proyecto.\n");
+if(ufp == 0){
+  printf("\n1. Calcular Puntos de Funcion.");
+}
+else{
+  printf("\n1. Calcular Puntos de Funcion. ---------------> %.0f", ufp);
+}
+
+
+if(tot == 0){
+  printf("\n2. Calcular complejidad.");
+}
+else{
+  printf("\n2. Calcular complejidad. ---------------------> %d", tot);
+  printf("\n     Puntos de Funcion ajustados: %.0f ", fp);
+}
+
+
+if(lang == 0){
+  printf("\n3. Seleccionar lenguaje de programacion.");
+}
+else if(lang == 1){
+  printf("\n3. Seleccionar lenguaje de programacion. -----> Java");
+}
+else if(lang == 2){
+  printf("\n3. Seleccionar lenguaje de programacion. -----> Javascript");
+}
+else if(lang == 3){
+  printf("\n3. Seleccionar lenguaje de programacion. -----> C");
+}
+else if(lang == 4){
+  printf("\n3. Seleccionar lenguaje de programacion. -----> C#");
+}
+if(lang != 0){
+  ldc = func_ldc(fp, lang);
+  printf("\n     Total de lineas de codigo estimadas: %.0f LDC", ldc);
+}
+
+
+if(tipo == 0){
+  printf("\n4. Seleccionar el tipo de proyecto.");
+}
+else if(tipo == 1){
+  printf("\n4. Seleccionar el tipo de proyecto. ----------> Organico");
+}
+else if(tipo == 2){
+  printf("\n4. Seleccionar el tipo de proyecto. ----------> Medio");
+}
+else if(tipo == 3){
+  printf("\n4. Seleccionar el tipo de proyecto. ----------> Embebido");
+}
+*/

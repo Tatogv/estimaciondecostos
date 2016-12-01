@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-/* 
+/*
  * File:   main.c
  * Author: Chemoso, Fernando, Cjaa92, Ricardo
  *
@@ -31,7 +31,7 @@
 #define JAVASC_S 27375
 
 /*
- * 
+ *
  */
 float func_ufp(int ei, int eo, int eq, int ilf, int eif);
 float func_fp(float ufp, int total);
@@ -54,13 +54,13 @@ int func_ask();
     personas = func_personas(energia, meses);
     total = func_total(personas, meses, lang);
     printf("%.2f",total);
-    
+
     return (EXIT_SUCCESS);
     }*/
 
 float func_ufp(int ei, int eo, int eq, int ilf, int eif)
 {
-    return((ei*PESO_EI)+(eo*PESO_EO)+(eq*PESO_EQ)+(ilf*PESO_ILF)+(eif*PESO_EIF));   
+    return((ei*PESO_EI)+(eo*PESO_EO)+(eq*PESO_EQ)+(ilf*PESO_ILF)+(eif*PESO_EIF));
 }
 
 float func_fp(float ufp, int total)
@@ -68,7 +68,7 @@ float func_fp(float ufp, int total)
     float caf;
     caf = (.65+(.01*total));
     return(round(ufp)*caf);
-    
+
 }
 
 float func_ldc(float fp, int lang)//lang = lenguaje, 1 == java, 2 == javascript, 3 == c, 4 == c#
@@ -136,7 +136,7 @@ float func_meses(int tipo, float energia)
         c = 2.5;
         d = .32;
         return(c*(pow(energia,d)));
-    }    
+    }
 }
 
 float func_personas(float energia, float meses)
@@ -166,9 +166,9 @@ float func_total(float personas, float meses, int lang)
     }
 }
 
-int func_ask() {//Retorna el total de la suma elegida por los usuarios en respuesta a las preguntas                                                                                                         
+int func_ask() {//Retorna el total de la suma elegida por los usuarios en respuesta a las preguntas
   int i,valor,error=0;
-  int total;
+  int total=0;
   char Pregunta[15][70];
 
   system("clear");

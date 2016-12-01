@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "funciones.c"
 
 extern float func_ufp(int ei, int eo, int eq, int ilf, int eif);
 extern float func_fp(float ufp, int tot);
@@ -11,7 +12,7 @@ extern int func_ask();//Funcion preguntas de factor ambiental
 
 int main(void)
 {
-  int ei, eo, eq, ilf, eif, tot=0, lang = 0, tipo = 0, opc, bandera;
+  int ei, eo, eq, ilf, eif, tot=-1, lang = 0, tipo = 0, opc, bandera;
   float ldc = 0, energia, meses, personas, total, fp, ufp = 0;
 
   system("clear");
@@ -23,65 +24,43 @@ int main(void)
   while(1){
 
     system("clear");
-
     printf(" ----- MENU PRINCIPAL ----- ");
     printf("\n\nPara seleccionar una opcion teclee el numero indicado y presione enter. Si desea modificar alguna seccion vuelva a seleccionar la opcion. Se necesitan haber llenado todos los campos antes de obtener el costo total del proyecto.\n");
-    if(ufp == 0){
-      printf("\n1. Calcular Puntos de Funcion.");
-    }
-    else{
-      printf("\n1. Calcular Puntos de Funcion. ---------------> %.0f", ufp);
-    }
-
-
-    if(tot == 0){
-      printf("\n2. Calcular complejidad.");
-    }
-    else{
-      printf("\n2. Calcular complejidad. ---------------------> %d", tot);
-      printf("\n     Puntos de Funcion ajustados: %.0f ", fp);
-    }
-
-
-    if(lang == 0){
-      printf("\n3. Seleccionar lenguaje de programacion.");
-    }
-    else if(lang == 1){
-      printf("\n3. Seleccionar lenguaje de programacion. -----> Java");
-    }
-    else if(lang == 2){
-      printf("\n3. Seleccionar lenguaje de programacion. -----> Javascript");
-    }
-    else if(lang == 3){
-      printf("\n3. Seleccionar lenguaje de programacion. -----> C");
-    }
-    else if(lang == 4){
-      printf("\n3. Seleccionar lenguaje de programacion. -----> C#");
-    }
-    if(lang != 0){
-      ldc = func_ldc(fp, lang);
-      printf("\n     Total de lineas de codigo estimadas: %.0f LDC", ldc);
-    }
-
-
-    if(tipo == 0){
-      printf("\n4. Seleccionar el tipo de proyecto.");
-    }
-    else if(tipo == 1){
-      printf("\n4. Seleccionar el tipo de proyecto. ----------> Organico");
-    }
-    else if(tipo == 2){
-      printf("\n4. Seleccionar el tipo de proyecto. ----------> Medio");
-    }
-    else if(tipo == 3){
-      printf("\n4. Seleccionar el tipo de proyecto. ----------> Embebido");
-    }
-
+    printf("\n1. Calcular Puntos de Funcion.");
+    printf("\n2. Calcular complejidad.");
+    printf("\n3. Seleccionar lenguaje de programacion.");
+    printf("\n4. Seleccionar el tipo de proyecto.");
     printf("\n5. Calcular costo total del proyecto.");
 
     printf("\n6. Salir.");
 
-    printf("\n\nOPCION: ");
+    printf("\n**************************************************");
+    printf("\n            Informacion  Proporcionada            ");
+    if(ufp != 0)
+      printf("\n  Puntos de Funcion:           %.0f", ufp);
+    if(tot != -1){
+      printf("\n  Nivel de Complejidad:        %d", tot);
+      printf("\n  Puntos de Funcion Ajustados: %.0f ", fp);
+    }
+    if(lang == 1)
+      printf("\n  Lenguage de Programacion:    Java");
+    else if(lang == 2)
+      printf("\n  Lenguage de Programacion:    JavaScript");
+    else if(lang == 3)
+      printf("\n  Lenguage de Programacion:    C");
+    else if(lang == 4)
+      printf("\n  Lenguage de Programacion:    C#");
+    if(lang != 0){
+      ldc = func_ldc(fp, lang);
+      printf("\n  Lineas de codigo estimadas:  %.0f LDC",ldc);
+    }
+    if(tipo == 1)
+      printf("\n  Tipo de proyecto:            Organico");
+    else if(tipo == 2)
+      printf("\n  Tipo de proyecto:            Medio");
+    else if(tipo == 3)
+      printf("\n  Tipo de proyecto:            Embebido");
+    printf("\n\n$ ");
 
     scanf("%d", &opc);
 
