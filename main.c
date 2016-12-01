@@ -79,8 +79,62 @@ int main(void)
 
     printf("\n\nOPCION: ");
 
-    getchar();
+    scanf("%d", &opc);
 
+    switch(opc){
+
+    case 1:
+
+      system("clear");
+      printf("     Para calcular los Puntos de Funcion del programa conteste las siquientes preguntas:\n");
+      printf("\n\n¿Cuantas entradas de usuario tiene el sistema?\n");
+      scanf("%d", &ei);
+      printf("\n¿Cuantas salidas de usuario tiene el sistema?\n");
+      scanf("%d", &eo);
+      printf("\n¿Cuantas peticiones de usuario tiene el sistema?\n");
+      scanf("%d", &eq);
+      printf("\n¿Cuantos archivos manejara el sistema?\n");
+      scanf("%d", &ilf);
+      printf("\n¿Cuantas cuantas interfaces externas manejara el sistema?\n");
+      scanf("%d", &eif);
+      //ufp = func_ufp(ei, eo, eq, ilf, eif);
+      ufp = 60;
+      system("clear");
+      printf("     Los puntos de funcion sin ajustar son: %.0f", ufp);
+      getchar();
+      getchar();
+
+      break;
+
+    case 2:
+
+      break;
+
+    case 3:
+
+      break;
+
+    case 4:
+
+      break;
+
+    case 5:
+
+      break;
+
+    case 6:
+
+      exit(0);
+
+      break;
+
+    default:
+
+      system("clear");
+      printf("Opcion invalida, por favor intente de nuevo");
+      getchar();
+    }
+    
   }
 
   return 0;
